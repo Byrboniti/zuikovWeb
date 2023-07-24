@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block index %}
+
+<!-- Main MAin page -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- Required meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet"  href="{% static 'external.css' %}">
+<body>
+
+    <header class="header">
+        <div class="block">
+        <div class="header-container">
+            <div>
+                <h2 class="header-title">Здравствуйте!</h2>
+                <br>
+                <p class="header-subtitle">Меня зовут ФИО. <br>Я врач-стоматолог,пародонтолог, хирург.<br> Это мой личный сайт, где вы можете узнать о моих услугах и записаться на консультацию.</p>
+            </div>
+            <div class="header-img-title">
+                <img class="header-img"
+                srcset="{% static './img/photodoc.jpg',
+                        './img/photodoc@2x.jpg' 2x %}"
+                src="{% static './img/photodoc.jpg' %}"
+                alt="doctor">
+            </div>
+        </div>
+    </div>
+    </header>
+
+
+
+
+<!-- specialization -->
+    <main>
+        <div class="main-spec">
+       <h2 class="service-main">Специализации врача</h2>
+        </div>
+       <div class="wrapper2">
+            <div class="card2">
+                <img class="card-img" src="{% static './img/1spec.jpg' %}">
+                <div class="card-description">
+                <div class="card-title">Пародонтология</div>
+                <div class="card-subtitle">Запущенный пародонтит вылечить полностью невозможно, а восстановить разрушенные ткани можно лишь до 30-40%. Вам важно понимать, что на данной стадии одним годом лечение скорее всего не ограничится – терапия будет долгой и достаточно сложной, необходимо приложить большие усилия для сохранения результата лечения.
+
+                </div>
+            </div>
+
+<!--                <div class="card-sub">Пародонтология-->
+<!--                    <br>-->
+<!--                    <br>-->
+<!--                    <span>Запущенный пародонтит вылечить полностью невозможно, а восстановить разрушенные ткани можно лишь до 30-40%. Вам важно понимать, что на данной стадии одним годом лечение скорее всего не ограничится – терапия будет долгой и достаточно сложной, необходимо приложить большие усилия для сохранения результата лечения.</span>-->
+<!--                </div>-->
+
+            </div>
+       </div>
+       <div class="wrapper2">
+        <div class="card2">
+                <img class="card-img" src="{% static './img/2spec.jpg' %}">
+                <div class="card-description">
+                <div class="card-title">Хирургия</div>
+                <div class="card-subtitle">Хирургическая стоматология— включает удаление зубов, установка имплантатов, лечение заболеваний челюстно-лицевого области, пластика уздечки языка и губы, пластики костной ткани и т.д.
+
+                </div>
+            </div>
+   </div>
+    </main>
+</body>
+
+<!-- карусель -->
+	{% include 'carusel.html' %}
+
+  	<section>
+  		<div class="container class_form">
+  			<h1 class="text-3">Оставь заявку и получи услугу</h1>
+  			<div class="row justify-content-center">
+  			<form action="{% url 'thanks' %}" method="POST" style="width: 50%;">
+				{% csrf_token %}
+			  <div class="form-group row">
+			    <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label><br>
+<!--			      <input type="text" class="form-control" name="name">-->
+				  {{ form.name }}
+			    <div class="">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="inputEmail3" class="col-sm-2 col-form-label">Телефон</label><br>
+<!--			      <input type="text" class="form-control" name="phone">-->
+				  {{ form.phone }}
+			    <div class="">
+			    </div>
+			  </div>
+			  <div style="float: right;" class="form-group row">
+			      <button type="submit" class="btn btn-success">ОСТАВИТЬ ЗАЯВКУ</button>
+			  </div>
+			</form>
+			</div>
+  		</div>
+  	</section>
+
+<!-- Адресса и карта -->
+
+
+    <div class="block_map">
+    <div class ="map-description">
+        <div class="map">
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab775f2bccc3e247b480f5088e93f8db27036f691133c0525b85cf34bc2e577ec&amp;width=801&amp;height=537&amp;lang=ru_RU&amp;scroll=true">
+            </script>
+        </div>
+        <div class="map-subtitle">
+            <div>
+                <h2 class="map-adress">Адрес</h2>
+            </div>
+            <div class="map-way">
+                <p style="text-indent: 20px;">м.Алексеевская, ул.Староалексеевская, д.20 <br>
+                    Жилой комплекс « Nova Алексеевская», 1 АРТ ОТЕЛЬ
+                    <br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;Вход в стоматологию рядом с Магазином СТОРИ, <br> стеклянная дверь с домофоном, код 777#
+                    2 этаж на лифте.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+
+<!--<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aad91b59ffae2fc2fd1198a897808137557bcf39cc97b219335066a35f31322b8&amp;width=785&amp;height=557&amp;lang=ru_RU&amp;scroll=true"></script>-->
+{% endblock %}

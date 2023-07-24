@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block index %}
+
+<!-- Main MAin page -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- Required meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet"  href="{% static 'external.css' %}">
+
+<div class="wrapper">
+	<div class="content">
+		<div class="hi">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm">
+						<div class="hi__title">
+							<div class="text-center">
+							<p><span>Здравствуйте!</span><br><br>
+								</div>
+							Меня зовут Зуйков Юрий Алексеевич, я врач-стоматолог, хирург.</p>
+							<br>
+							<p>Это мой личный сайт, где вы сможете ознакомиться с моими услугами и записаться на консультацию.</p>
+						</div>
+					</div>
+					<div class="img-fluid text-center">
+						<img src="{% static './img/pd.jpg' %}" class="rounded mx-auto d-block w-100  float-end" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+<div class="container">
+	<div class="columns__title title">Специализации
+		</div>
+<div class="row">
+  <div class="col-xl-3 col-sm-12">
+	  <img src='{% static "/img/111.png"%}'  class="rounded mx-auto d-block w-50 " alt="PD">
+  		</div>
+	<div class="col-xl-3 col-sm-12">
+	  <div class="item__text">
+	  Если вы считаете, что болезни пародонта – это не про вас, то на 90% ошибаетесь. По статистике, как раз 90% всех людей на планете (и детей, и взрослых) сталкиваются как минимум с поверхностным воспалением десен.</div>
+  </div>
+	  <div class="col-xl-3 col-sm-12">
+		  <img src='{% static "/img/2-round.png" %}'  class="rounded mx-auto d-block w-50" alt="PD">
+	  		</div>
+  <div class="col-xl-3 col-sm-12">
+	  <div class="item__text">Хирургическое лечение полости рта нужно, когда лекарства и терапия не помогают. Приходится решать вопрос радикально – проводить операции на деснах или челюстных костях, удалять зубы или даже ставить импланты.</div>
+  </div>
+  </div>
+</div>
+
+
+		<!-- карусель -->
+		{% include 'carusel.html' %}
+		<a class="btn btn-info btn-lg btn-block" href="/more" role="button">Больше сертификатов</a>
+		<section>
+			<div class="container class_form">
+				<h1 class="text-3">Оставь заявку и получи услугу</h1>
+				<div class="row justify-content-center">
+					<form action="{% url 'thanks' %}" method="POST" style="width: 50%;">
+						{% csrf_token %}
+						<div class="form-group row">
+							<label for="inputEmail3" class="col-md-3 col-sm-2 col-form-label">Имя</label><br>
+
+							{{ form.name }}
+							<div class="">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputEmail3" class="col-md-3 col-sm-2 col-form-label">Телефон</label><br>
+
+							{{ form.phone }}
+							<div class="">
+							</div>
+						</div>
+						<div style="float: inherit ;" class="form-group row">
+							<button type="submit" class="btn btn-info btn-lg btn-block">ОСТАВИТЬ ЗАЯВКУ</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<!-- Адресса и карта -->
+
+<div class="wrapper">
+	<div class="content">
+		<div class="container">
+			<div class ="row">
+				<div class="col col-md">
+					<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ab775f2bccc3e247b480f5088e93f8db27036f691133c0525b85cf34bc2e577ec&amp;width=801&amp;height=537&amp;lang=ru_RU&amp;scroll=true">
+					</script>
+				</div>
+				<div class="col col-md-order-first">
+					<div>
+						<h2 class=" text-info  text-center"><strong>Адрес</strong></h2>
+					</div>
+					<div class="map-way text-center">
+						<p class="h4"><br><br>м.Алексеевская, ул.Староалексеевская, д.20 <br>
+							Жилой комплекс « Nova Алексеевская», 1 АРТ ОТЕЛЬ
+							<br>
+							<br>
+							&nbsp;&nbsp;&nbsp;Вход в стоматологию рядом с Магазином СТОРИ, <br> стеклянная дверь с домофоном, код 777#
+							2 этаж на лифте.
+						</p>
+					</div>
+				</div>
+</div>
+			</div>
+			</div>
+		</div>
+
+
+		<!--<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aad91b59ffae2fc2fd1198a897808137557bcf39cc97b219335066a35f31322b8&amp;width=785&amp;height=557&amp;lang=ru_RU&amp;scroll=true"></script>-->
+{% endblock %}
